@@ -18,16 +18,19 @@ export class ScoringService {
 
   constructor(private http: HttpClient) { }
 
-  login(APIXToken: string): Observable<any> {
-    const headers = this.commonOptions.headers.append('X-Authorization', 'bearer ' + APIXToken);
+  login(APIXToken?: string): Observable<any> {
+    const headers: HttpHeaders = APIXToken
+      ? this.commonOptions.headers.append('X-Authorization', 'bearer ' + APIXToken)
+      : this.commonOptions.headers;
     const body = JSON.stringify(config.scoreApi.credentials);
 
     return this.http.post(config.scoreApi.url.loginEndpoint, body, { headers });
   }
 
-  createReq(APIXToken: string, accessToken: string, msisdn: string): Observable<any> {
-    const headers = this.commonOptions.headers
-      .append('X-Authorization', 'bearer ' + APIXToken)
+  createReq(accessToken: string, msisdn: string, APIXToken?: string): Observable<any> {
+    const headers = (APIXToken
+      ? this.commonOptions.headers.append('X-Authorization', 'bearer ' + APIXToken)
+      : this.commonOptions.headers)
       .append('Authorization', 'Bearer ' + accessToken);
 
     const body: requestBodies.CreateReqBody = {
@@ -38,9 +41,10 @@ export class ScoringService {
     return this.http.post(config.scoreApi.url.createReqEndpoint, body, { headers });
   }
 
-  verifyReq(APIXToken: string, accessToken: string, reqId: string, otp: string): Observable<any> {
-    const headers = this.commonOptions.headers
-      .append('X-Authorization', 'bearer ' + APIXToken)
+  verifyReq(accessToken: string, reqId: string, otp: string, APIXToken?: string): Observable<any> {
+    const headers = (APIXToken
+      ? this.commonOptions.headers.append('X-Authorization', 'bearer ' + APIXToken)
+      : this.commonOptions.headers)
       .append('Authorization', 'Bearer ' + accessToken);
 
     const body: requestBodies.VerifyReqBody = {
@@ -51,10 +55,11 @@ export class ScoringService {
     return this.http.post(config.scoreApi.url.createReqEndpoint, body, { headers });
   }
 
-  getScore(APIXToken: string, accessToken: string, msisdn: string, consentId: string): Observable<any> {
-    const headers = this.commonOptions.headers
-    .append('X-Authorization', 'bearer ' + APIXToken)
-    .append('Authorization', 'Bearer ' + accessToken);
+  getScore(accessToken: string, msisdn: string, consentId: string, APIXToken?: string): Observable<any> {
+    const headers = (APIXToken
+      ? this.commonOptions.headers.append('X-Authorization', 'bearer ' + APIXToken)
+      : this.commonOptions.headers)
+      .append('Authorization', 'Bearer ' + accessToken);
 
     const body: requestBodies.ScoreReqBody = {
       client_code: config.scoreApi.clientCode,
