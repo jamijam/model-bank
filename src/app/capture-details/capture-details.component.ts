@@ -52,6 +52,8 @@ export class CaptureDetailsComponent implements OnInit {
           this.sendOTP(accessToken, msisdn);
         }
       });
+    } else {
+      this.sendOTP(accessToken, msisdn);
     }
   }
 
