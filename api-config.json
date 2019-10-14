@@ -1,0 +1,23 @@
+{
+    "apix": {
+        "credentials": {
+            "username": "Please replace this with your APIX username.",
+            "password": "Please replace this with your APIX password."
+        },
+        "tokenUrl": "https://services.apixplatform.com/api-sandbox/application/token"
+    },
+    "scoreApi": {
+        "credentials": {
+            "user_name": "Please replace this with your trustingSocial username.",
+            "password": "Please replace this with your trustingSocial password."
+        },
+        "clientCode": "Please replace this with your trustingSocial clientCode.",
+        "url" : {
+            "base": "https://staging-api.trustingsocial.com",
+            "loginEndpoint": "https://staging-api.trustingsocial.com/authentication/users/login",
+            "createReqEndpoint": "https://staging-api.trustingsocial.com/score_api/otp_sms_requests/create",
+            "verifyReqEndpoint": "https://staging-api.trustingsocial.com/score_api/otp_sms_requests/verify",
+            "scoreReqEndpoint": "https://staging-api.trustingsocial.com/score_api/credit_score_requests/create/with_internal_consent"
+        }
+    }
+}
