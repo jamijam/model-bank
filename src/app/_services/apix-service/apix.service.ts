@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import * as hardcoded from '../../../../api-config.json';
+import * as config from 'api-config.json';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class ApixService {
       })
     };
 
-    const request = JSON.stringify(hardcoded.apix.credentials);
+    const body = JSON.stringify(config.apix.credentials);
 
-    return this.http.post(hardcoded.apix.tokenUrl, request, apixOptions);
+    return this.http.post(config.apix.tokenUrl, body, apixOptions);
   }
 }
