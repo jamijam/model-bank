@@ -1,1 +1,23 @@
-<p>otp works!</p>
+<div class="container text-light">
+    <div class="row text-center pt-5">
+        <h1 class="col">Model Bank Micro Lending Demo</h1>
+    </div>
+    <div class="row pt-5">
+        <div class="col">
+            An SMS has been sent to {{ msisdn }} with an OTP (One-Time Password). Please enter it below:
+        </div>
+    </div>
+    <div class="row mt-2 card text-dark">
+        <div class="col card-body">
+            <form [formGroup]="formDetails" (ngSubmit)="onSubmit(formDetails.value)">
+                <div class="form-group">
+                    <label for="name">OTP</label>
+                    <input type="text" class="form-control" id="otp" placeholder="Enter OTP" formControlName="otp">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <small id="errHelp" *ngIf="!valid" class="form-text text-danger">Please enter the OTP.</small>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="background"></div>

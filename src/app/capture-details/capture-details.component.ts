@@ -8,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class CaptureDetailsComponent implements OnInit {
   valid = true;
-  formDetails;
+  formDetails: any;
 
   constructor(private formBuilder: FormBuilder) { }
 
