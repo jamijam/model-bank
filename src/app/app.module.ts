@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_reusable/header/header.component';
@@ -20,6 +21,7 @@ import { OtpComponent } from './otp/otp.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
