@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-capture-details',
@@ -6,10 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./capture-details.component.scss']
 })
 export class CaptureDetailsComponent implements OnInit {
+  valid = true;
+  formDetails;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.formDetails = this.formBuilder.group({
+      name: '',
+      msisdn: ''
+    });
+  }
+
+  onSubmit(formData: any) {
+    console.log('Received Data', formData);
+
+    if (!formData.name || !formData.msisdn) {
+      this.valid = false;
+    } else {
+      this.valid = true;
+    }
+
+    this.formDetails.reset();
   }
 
 }
