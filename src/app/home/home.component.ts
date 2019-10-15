@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  detailsPresent: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    const accDetails = JSON.parse(localStorage.getItem('accountDetails'));
+    this.detailsPresent = (accDetails && accDetails.accountName);
   }
 
 }

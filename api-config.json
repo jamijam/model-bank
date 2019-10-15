@@ -1,10 +1,18 @@
 {
     "apix": {
         "credentials": {
-            "username": "Please replace this with your APIX username.",
+            "userName": "Please replace this with your APIX username.",
             "password": "Please replace this with your APIX password."
         },
         "tokenUrl": "https://services.apixplatform.com/api-sandbox/application/token"
+    },
+    "facematch": {
+        "apiCredentials": {
+            "appId": "2d9288",
+            "appKey": "506505f70970ce16988f"
+        },
+        "apixTokenUrl": "https://services.apixplatform.com/api-sandbox/application/token",
+        "verifyUrl": "https://api.apixplatform.com/facematch/1.0/v1/photo/verifyPair"
     },
     "scoreApi": {
         "credentials": {
@@ -21,5 +29,15 @@
             "verifyReqEndpoint": "https://staging-api.trustingsocial.com/score_api/otp_sms_requests/verify",
             "scoreReqEndpoint": "https://staging-api.trustingsocial.com/score_api/credit_score_requests/create/with_internal_consent"
         }
+    },
+    "smartbank": {
+        "accountTypeId": 1000000030,
+        "bankId": 1008,
+        "branchId": 8000308,
+        "partyType": "P",
+        "productId": 1000000012,
+        "createPartyUrl": "https://api.apixplatform.com/sbparty/2.0/party/party/parties",
+        "createAccountUrl": "https://api.apixplatform.com/sbaccount/2.0/account/accounts/accounts",
+        "setOwnersUrl": "https://api.apixplatform.com/sbaccount/2.0/account/accounts/account-owners"
     }
 }

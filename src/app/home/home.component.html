@@ -13,7 +13,9 @@
     </div>
     <div class="row pt-5 text-center">
         <div class="col">
-            <button class="btn btn-success" [routerLink]="['/apply']">Apply for a Loan</button>
+            <button *ngIf="detailsPresent" class="btn btn-success" [routerLink]="['/apply']">Apply for a Loan</button>
+            <button *ngIf="!detailsPresent" class="btn btn-success" [routerLink]="['/login']">Create an
+                Account</button>
         </div>
     </div>
 </div>

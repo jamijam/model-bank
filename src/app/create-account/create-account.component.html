@@ -1,0 +1,96 @@
+<div class="container-fluid canvas-bg">
+  <div class="container content-bg">
+
+    <div class="page-heading">
+
+      <h1 class="title">WELCOME TO MODEL BANK</h1>
+      <h6 class="subheading">Thank you for choosing to create an account with us.</h6>
+
+      <hr>
+
+    </div>
+
+    <div class="row steps-custom">
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">01</span>
+      </div>
+
+      <div class="div progress-tracker-active"></div>
+
+      <div class="text-center progress-circle-active">
+        <span class="span-number">02</span>
+      </div>
+
+      <div class="div progress-tracker"></div>
+
+      <div class="text-center progress-circle">
+        <span class="span-number">03</span>
+      </div>
+
+    </div>
+
+    <div class="title">
+      <!--Step Action-->
+      <h3 class="text-description">Create Account</h3>
+      <h6>Please fill the form below</h6>
+    </div>
+
+    <div class="form">
+      <div class="field">
+
+        <span class="label">Account Name</span>
+        <input class="text-field form-field" [(ngModel)]="accountName" type="text" placeholder="Account Name" />
+
+        <span class="label">NickName</span>
+        <input class="text-field form-field" [(ngModel)]="nickname" type="text" placeholder="NickName" />
+
+        <span class="label">Select Account Scheme</span>
+        <select class="text-field form-field" (change)='onOptionsSelected($event.target.value)'>
+          <option disabled>Select Scheme</option>
+          <option *ngFor="let scheme of schemes;let i = index" value={{i}}>
+            {{scheme}}
+          </option>
+        </select>
+
+        <span class="label">Card Facility</span>
+        <br>
+        <br>
+
+        <div class="row">
+          <label class="switch">
+            <input type="checkbox" data-md-icheck (change)="cardFacility($event)" />
+            <span class="slider round"></span>
+          </label>
+
+          <div class="submit text-right">
+            <button [disabled]="checkDisabled()" class="input-button" (click)="getAccountValues()" data-toggle="modal"
+              data-target="#exampleModal">
+              Create Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Account Creation Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{message}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closeBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
