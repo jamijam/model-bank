@@ -1,9 +1,9 @@
-<div class="container text-light">
-    <div class="row text-center pt-5">
-        <h1 class="col">Model Bank Micro Lending Demo</h1>
+<div class="container pt-5">
+    <div class="row text-center pt-5 text-light font-weight-bold">
+        <h1 class="col xbootstrap">Model Bank Loan Process</h1>
     </div>
-    <div class="row pt-5">
-        <div class="col">
+    <div class="row mt-5 card">
+        <div class="col card-body">
             Etiam aliquam consequat tellus eu finibus. Quisque sodales quam posuere mi laoreet, a pellentesque quam
             ullamcorper. Imt in imperdiet nibh. Vestibulum id sapien sit amet purus tristique blandit. Integer vitae
             quam non purus venenatis dictum in at quam. Maecenas ut ligula vel mauris venenatis placerat quis et urna.
@@ -13,8 +13,8 @@
     </div>
     <div class="row pt-5 text-center">
         <div class="col">
-            <button *ngIf="detailsPresent" class="btn btn-success" [routerLink]="['/apply']">Apply for a Loan</button>
-            <button *ngIf="!detailsPresent" class="btn btn-success" [routerLink]="['/login']">Create an
+            <button *ngIf="detailsPresent" class="btn btn-primary" [routerLink]="['/apply']">Apply for a Loan</button>
+            <button *ngIf="!detailsPresent" class="btn btn-primary" [routerLink]="['/login']">Create an
                 Account</button>
         </div>
     </div>

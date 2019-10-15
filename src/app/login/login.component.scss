@@ -1,18 +1,20 @@
-.canvas-bg{
-  background-color: #222222;
+.canvas-bg {
+  background: linear-gradient(#485461, #485461), url(../../assets/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  background-blend-mode: saturation;
   min-height: 90vh;
   padding: 2rem;
 }
 
-.content-bg{
+.content-bg {
   padding: 2rem;
   background-color: #fff;
   border: 1px solid #fff;
-  border-radius: 5px; 
-  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
 }
 
-.progress-circle{
+.progress-circle {
   width: 4rem;
   height: 4rem;
   border: 2px solid #ddd;
@@ -21,7 +23,7 @@
   padding: 1rem;
 }
 
-.progress-circle-active{
+.progress-circle-active {
   width: 4rem;
   height: 4rem;
   border: 2px solid #00aced;
@@ -30,20 +32,20 @@
   padding: 1rem;
 }
 
-.span-number{
+.span-number {
   font-size: 20px;
   font-weight: 600;
 }
 
-.progress-tracker{
+.progress-tracker {
   width: 7rem;
   height: 0rem;
   margin-top: 2rem;
-  margin-bottom: 2rem; 
+  margin-bottom: 2rem;
   border: 2px solid #ddd;
 }
 
-.progress-tracker-active{
+.progress-tracker-active {
   width: 7rem;
   height: 0rem;
   margin-top: 2rem;
@@ -51,32 +53,32 @@
   border: 2px solid #00aced;
 }
 
-.page-heading{
+.page-heading {
   margin-top: 2rem;
 }
 
-.title{
+.title {
   font-weight: 600;
 }
 
-.text-description{
+.text-description {
   margin-top: 1rem;
 }
 
-.steps-custom{
+.steps-custom {
   margin-top: 3rem !important;
   margin-bottom: 1rem !important;
 }
 
-.form{
-  margin-top: 2rem; 
+.form {
+  margin-top: 2rem;
 }
 
-.upload{
+.upload {
   float: left;
 }
 
-.input-button{
+.input-button {
   background-color: #00aced;
   color: white;
   padding: 7px 50px;
@@ -85,7 +87,7 @@
   margin-top: 1rem;
 }
 
-.input-button:hover{
+.input-button:hover {
   border: 1px solid #00aced;
   background-color: #00000000;
   color: #00aced;
@@ -93,29 +95,29 @@
   transition: 0.3s ease-in-out;
 }
 
-.input-button:disabled{
+.input-button:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.row{
+.row {
   margin: 0;
-  padding: 0;  
+  padding: 0;
 }
 
-.text-description{
+.text-description {
   font-weight: 600;
 }
 
-.steps{
+.steps {
   margin-left: 34rem;
   font-size: 1rem;
   color: orange;
   font-weight: bold;
 }
 
-.verified-text{
-  color: #66E82E;
+.verified-text {
+  color: #66e82e;
   margin-top: 1.2rem;
   font-weight: bold;
 }

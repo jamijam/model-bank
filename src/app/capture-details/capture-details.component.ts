@@ -22,10 +22,15 @@ export class CaptureDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const accDetails = JSON.parse(localStorage.getItem('accountDetails'));
+    if (!accDetails) {
+      this.router.navigate(['']);
+    }
     this.formDetails = this.formBuilder.group({
       name: '',
       msisdn: ''
     });
+    this.formDetails.controls.name.setValue(accDetails.accountName);
   }
 
   onSubmit(formData: any) {

@@ -5,6 +5,8 @@
   bottom: 0;
   right: 0;
   overflow: auto;
-  background: #222222;
+  background: linear-gradient(#485461, #485461), url(../../assets/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+  background-blend-mode: saturation;
   z-index: -8;
 }
