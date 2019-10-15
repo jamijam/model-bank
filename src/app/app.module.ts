@@ -13,6 +13,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { HomeComponent } from './home/home.component';
 import { CaptureDetailsComponent } from './capture-details/capture-details.component';
 import { OtpComponent } from './otp/otp.component';
+import { LoanPageComponent } from './loan-page/loan-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { OtpComponent } from './otp/otp.component';
     ViewDetailsComponent,
     HomeComponent,
     CaptureDetailsComponent,
-    OtpComponent
+    OtpComponent,
+    LoanPageComponent
   ],
   imports: [
     BrowserModule,

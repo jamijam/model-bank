@@ -72,6 +72,7 @@ export class CreateAccountComponent implements OnInit {
             const partyDetails = response.party;
 
             const accountDetails = {
+              accountId: this.account.accountId,
               accountIdentification: this.account.accountIdentification,
               partyId: partyDetails.partyId,
               accountName: accountData.accountName,

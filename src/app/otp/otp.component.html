@@ -17,7 +17,9 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <small id="errHelp" *ngIf="!valid" class="form-text text-danger">Please enter the OTP.</small>
             </form>
-            <h2 *ngIf="score" class="text-success text-center pt-3">You are eligible for a loan!</h2>
+            <h2 *ngIf="score" class="text-success text-center pt-3">You are eligible for a loan!<br/>
+                <button class="btn btn-success" [routerLink]="['/loanapproval']">Continue</button>
+            </h2>
         </div>
     </div>
 </div>

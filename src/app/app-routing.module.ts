@@ -6,6 +6,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { HomeComponent } from './home/home.component';
 import { CaptureDetailsComponent } from './capture-details/capture-details.component';
 import { OtpComponent } from './otp/otp.component';
+import { LoanPageComponent } from './loan-page/loan-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'viewdetails', component: ViewDetailsComponent },
   { path: 'apply', component: CaptureDetailsComponent },
   { path: 'otp', component: OtpComponent },
+  { path: 'loanapproval', component: LoanPageComponent },
 
   { path: '**', redirectTo: '/home' }
 ];

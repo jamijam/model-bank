@@ -1,0 +1,25 @@
+<div class="container text-light">
+    <div class="row text-center pt-5">
+        <h1 class="col xbootstrap">Model Bank Loan Process</h1>
+    </div>
+    <div class="row mt-2 card text-dark">
+        <div class="col card-body">
+            <form [formGroup]="formDetails" (ngSubmit)="onSubmit(formDetails.value)" *ngIf="!loanId">
+                <div class="form-group">
+                    <label for="amt">Please enter the loan amount, in GBP:</label>
+                    <input type="text" class="form-control" id="amt" placeholder="Enter Loan Amount" formControlName="amt">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <small id="errHelp" *ngIf="!valid" class="form-text text-danger">Please enter an amount.</small>
+            </form>
+            <div class="title text-center" *ngIf="loanId">
+                <h3 class="text-description">Your loan for GBP {{ amt }} has been successfully disbursed!</h3><br/>
+                <h6>A mail from Model Bank has been sent to you to provide further information.
+                    <br />Please save the following ID in a secure location:
+                </h6><br />
+                <span class="account-Info" [innerHTML]="loanId"></span><br /><br />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background"></div>

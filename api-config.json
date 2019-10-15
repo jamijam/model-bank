@@ -39,6 +39,7 @@
         "productId": 1000000012,
         "createPartyUrl": "https://api.apixplatform.com/sbparty/2.0/party/party/parties",
         "createAccountUrl": "https://api.apixplatform.com/sbaccount/2.0/account/accounts/accounts",
-        "setOwnersUrl": "https://api.apixplatform.com/sbaccount/2.0/account/accounts/account-owners"
+        "setOwnersUrl": "https://api.apixplatform.com/sbaccount/2.0/account/accounts/account-owners",
+        "loanUrl": "https://api.apixplatform.com/sblendingV1/2.0/lending/loan"
     }
 }
