@@ -12,7 +12,7 @@
             "password": "Please replace this with your trustingSocial password."
         },
         "clientCode": "Please replace this with your trustingSocial clientCode.",
-        "telcoPubKeyPath": "Please replace this with the Telco public key that you received from trustingSocial.",
+        "telcoPubKey": "Please replace this with the Telco public key that you received from trustingSocial.",
         "clientPrivateKey": "Please replace this with the private key that you have registered with trustingSocial.",
         "url": {
             "base": "https://staging-api.trustingsocial.com",
