@@ -20,7 +20,7 @@ export class CryptoService {
 
   encryptRSAOAEP(stringToEncrypt: string): string {
     const data = this.stringToArrayBuffer(stringToEncrypt);
-    this.jsCrypt.importKey('jwk', JSON.parse(JSON.stringify(config.scoreApi.telcoPubKey)) as JsonWebKey, {
+    this.jsCrypt.importKey('jwk', config.scoreApi.telcoPubKey as JsonWebKey, {
       name: 'RSA-OAEP',
       hash: { name: 'SHA-256' },
     }, false, ['encrypt']).then((publicKey) => {
@@ -41,7 +41,7 @@ export class CryptoService {
 
   decryptRSAOAEP(stringToDecrypt: string): string {
     const data = this.stringToArrayBuffer(stringToDecrypt);
-    this.jsCrypt.importKey('jwk', config.scoreApi.clientPrivateKey, {
+    this.jsCrypt.importKey('jwk', config.scoreApi.clientPrivateKey as JsonWebKey, {
       name: 'RSA-OAEP',
       hash: { name: 'SHA-256' },
     }, false, ['decrypt']).then((publicKey) => {
