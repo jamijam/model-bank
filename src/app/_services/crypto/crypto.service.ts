@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
 
 import * as config from 'api-config.json';
 
@@ -18,46 +19,46 @@ export class CryptoService {
     return atob(stringToDecode);
   }
 
-  encryptRSAOAEP(stringToEncrypt: string): string {
-    const data = this.stringToArrayBuffer(stringToEncrypt);
-    this.jsCrypt.importKey('jwk', config.scoreApi.telcoPubKey as JsonWebKey, {
+  getPubKey(): Observable<CryptoKey> {
+    const PubKeyPromise: PromiseLike<CryptoKey> = this.jsCrypt.importKey('jwk', config.scoreApi.telcoPubKey as JsonWebKey, {
       name: 'RSA-OAEP',
-      hash: { name: 'SHA-256' },
-    }, false, ['encrypt']).then((publicKey) => {
-      window.crypto.subtle.encrypt(
-        {
-          name: 'RSA-OAEP',
-        },
-        publicKey,
-        data
-      )
-        .then((encrypted) => {
-          stringToEncrypt = this.arrayBufferToString(encrypted);
-          return stringToEncrypt;
-        });
-    });
-    return stringToEncrypt;
+      hash: { name: 'SHA-512' },
+    }, false, ['encrypt']);
+    return from(PubKeyPromise);
   }
 
-  decryptRSAOAEP(stringToDecrypt: string): string {
-    const data = this.stringToArrayBuffer(stringToDecrypt);
-    this.jsCrypt.importKey('jwk', config.scoreApi.clientPrivateKey as JsonWebKey, {
+  getPrivKey(): Observable<CryptoKey> {
+    const PrivKeyPromise: PromiseLike<CryptoKey> = this.jsCrypt.importKey('jwk', config.scoreApi.clientPrivateKey as JsonWebKey, {
       name: 'RSA-OAEP',
       hash: { name: 'SHA-256' },
-    }, false, ['decrypt']).then((publicKey) => {
-      window.crypto.subtle.decrypt(
+    }, false, ['decrypt']);
+    return from(PrivKeyPromise);
+  }
+
+  encryptRSAOAEP(stringToEncrypt: string, publicKey: CryptoKey): Observable<any> {
+    const data = this.stringToArrayBuffer(stringToEncrypt);
+    const encryptedPromise: PromiseLike<any>
+      = this.jsCrypt.encrypt(
         {
           name: 'RSA-OAEP',
         },
         publicKey,
         data
-      )
-        .then((decrypted) => {
-          stringToDecrypt = this.arrayBufferToString(decrypted);
-          return stringToDecrypt;
-        });
-    });
-    return stringToDecrypt;
+      );
+    return from(encryptedPromise);
+  }
+
+  decryptRSAOAEP(stringToDecrypt: string, privateKey: CryptoKey): Observable<any> {
+    const data = this.stringToArrayBuffer(stringToDecrypt);
+    const decryptedPromise: PromiseLike<any>
+      = this.jsCrypt.decrypt(
+        {
+          name: 'RSA-OAEP',
+        },
+        privateKey,
+        data
+      );
+    return from(decryptedPromise);
   }
 
   stringToArrayBuffer(str) {
