@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import * as config from 'api-config.json';
@@ -35,7 +35,7 @@ export class ScoringService {
 
     const body: requestBodies.CreateReqBody = {
       client_code: config.scoreApi.clientCode,
-      requested_msisdn: msisdn
+      requested_msisdn: config.scoreApi.encMSISDN
     };
 
     return this.http.post(config.scoreApi.url.createReqEndpoint, body, { headers });
@@ -52,7 +52,10 @@ export class ScoringService {
       otp
     };
 
-    return this.http.post(config.scoreApi.url.createReqEndpoint, body, { headers });
+    let params: HttpParams = new HttpParams();
+    params = params.append('request_id', body.request_id).append('otp', body.otp);
+
+    return this.http.get(config.scoreApi.url.verifyReqEndpoint, { headers, params });
   }
 
   getScore(accessToken: string, msisdn: string, consentId: string, APIXToken?: string): Observable<any> {
@@ -63,7 +66,7 @@ export class ScoringService {
 
     const body: requestBodies.ScoreReqBody = {
       client_code: config.scoreApi.clientCode,
-      requested_msisdn: msisdn,
+      requested_msisdn: config.scoreApi.encMSISDN,
       consent_id: consentId
     };
 

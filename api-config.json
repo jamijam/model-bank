@@ -22,6 +22,7 @@
         "clientCode": "Please replace this with your trustingSocial clientCode.",
         "telcoPubKey": "Please replace this with the Telco public key that you received from trustingSocial.",
         "clientPrivateKey": "Please replace this with the private key that you have registered with trustingSocial.",
+        "encMSISDN": "",
         "url": {
             "base": "https://staging-api.trustingsocial.com",
             "loginEndpoint": "https://staging-api.trustingsocial.com/authentication/users/login",
