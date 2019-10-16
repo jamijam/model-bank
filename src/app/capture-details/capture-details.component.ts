@@ -63,22 +63,15 @@ export class CaptureDetailsComponent implements OnInit {
   }
 
   sendOTP(accessToken: string, msisdn: string) {
-    this.cryptoService.getPubKey().subscribe(pubKey => {
-      console.log('pubkey', pubKey);
-      this.cryptoService.encryptRSAOAEP(msisdn, pubKey).subscribe(secureMSISDN => {
-        secureMSISDN = new Uint8Array(secureMSISDN);
-        secureMSISDN = this.cryptoService.arrayBufferToString(secureMSISDN);
-        console.log('MSISDNEncrypted', secureMSISDN);
-        secureMSISDN = this.cryptoService.encodeBase64(secureMSISDN);
-        console.log('MSISDNEncoded', secureMSISDN);
+    this.cryptoService.encrypt(msisdn).subscribe(secureMSISDN => {
+      console.log('secureMSISDN', secureMSISDN);
 
-        localStorage.setItem('secureMSISDN', secureMSISDN);
-        this.scoringService.createReq(accessToken, secureMSISDN).subscribe(response => {
-          if (response.data && response.data.request_id) {
-            localStorage.setItem('request_id', response.data.request_id);
-            this.router.navigate(['/otp']);
-          }
-        });
+      localStorage.setItem('secureMSISDN', secureMSISDN);
+      this.scoringService.createReq(accessToken, secureMSISDN).subscribe(response => {
+        if (response.data && response.data.request_id) {
+          localStorage.setItem('request_id', response.data.request_id);
+          this.router.navigate(['/otp']);
+        }
       });
     });
   }

@@ -35,7 +35,7 @@ export class ScoringService {
 
     const body: requestBodies.CreateReqBody = {
       client_code: config.scoreApi.clientCode,
-      requested_msisdn: config.scoreApi.encMSISDN
+      requested_msisdn: msisdn
     };
 
     return this.http.post(config.scoreApi.url.createReqEndpoint, body, { headers });
@@ -66,7 +66,7 @@ export class ScoringService {
 
     const body: requestBodies.ScoreReqBody = {
       client_code: config.scoreApi.clientCode,
-      requested_msisdn: config.scoreApi.encMSISDN,
+      requested_msisdn: msisdn,
       consent_id: consentId
     };
 
