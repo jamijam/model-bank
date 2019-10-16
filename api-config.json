@@ -30,9 +30,9 @@
     },
     "encDecUtil" : {
         "url": {
-            "base": "localhost:8080",
-            "encryptEndpoint": "http://localhost:8080/encrypt",
-            "decryptEndpoint": "http://localhost:8080/decrypt"
+            "base": "https://ide-microlending-backend.services.apixplatform.com",
+            "encryptEndpoint": "https://ide-microlending-backend.services.apixplatform.com/encrypt",
+            "decryptEndpoint": "https://ide-microlending-backend.services.apixplatform.com/decrypt"
         }
     },
     "smartbank": {
