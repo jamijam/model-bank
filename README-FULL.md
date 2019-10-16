@@ -4,13 +4,48 @@ This use case is an extension of [Micro-Lending Credit Insight Use Case](https:/
 
 Evaluating the creditworthiness of the borrowers, automated loan approval and loan disbursement is demonstrated in this use case.
 
-## Additional APIs used to implement the use case
+## APIs used to implement the use case
 
-1. Smart Bank - Lending ([Link](https://apixplatform.com/profile/api-detail?api-id=110))
+1. HyperVerge Face Match ([Link](https://apixplatform.com/profile/api-detail?api-id=30))
+
+    * Additional API Keys are required to access HyperVerge Face Match API.
+        * appId: 2d9288
+        * appKey: 506505f70970ce16988f
+
+2. Smart Bank - Party ([Link](https://apixplatform.com/profile/api-detail?api-id=107))
+3. Smart Bank - Account ([Link](https://apixplatform.com/profile/api-detail?api-id=103))
+4. Trusting Social - Credit Insight ([Link](https://apixplatform.com/profile/api-detail?api-id=259))
+
+    * Staging API access Keys
+        * username: apix_user
+        * password: apixuser@123
+        * clientCode: apix_client
+        * host: https://staging-api.trustingsocial.com
+        * basePath: /
+5. **Smart Bank - Lending** ([Link](https://apixplatform.com/profile/api-detail?api-id=110))
 
 Login to [APIX Platform](https://apixplatform.com) and subscribe to above APIs before continue to next step.
 
+## Provision APIX IDE Instance
+
+Note: If you already have an IDE instance running, you don't need to create a new IDE instance. 
+
+1. Login to [APIX Platform](https://apixplatform.com)
+2. From the main menu, go to Sandbox > [Secure Experimentation Sandbox/IDE](https://apixplatform.com/ide/api-ide)
+3. Click `Create IDE Instance` button
+4. Provide `Name`, `URL`, `Description`, `Password` for the IDE instance and click `Create` button. 
+Please note that `URL` should be unique and `Password` must be atleast 8 characters long, must contain a number, uppercase, lowercase and a special character.
+5. Provide the confirmation by clicking on `Create and Launch` button. Wait for the IDE instance to be provissioned.
+6. Newly created IDE instance will be openned in a new browser tab. Provide the `Password` and click on `Open IDE` button.
+7. Already created IDE instances will appear in `IDE Instance Manager` view. Click on the IDE instance name to re-open the IDE instance
+8. Please note that IDE instance will be available for 24 hours. Data should be backed up by pushing code to GitHub before auto termination. One hour before the termination, you can request for an termination extension.
+
 ## Running the use case
+
+1. Open and login to IDE instance
+2. From the main menu, click `View` > `Terminal`.
+
+Execute following commands in Terminal window.
 
 **Note:** If previous use case is running in the IDE Terminal, Press `Ctrl` + `C` to stop. 
 
