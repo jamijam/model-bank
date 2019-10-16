@@ -15,4 +15,9 @@ export class HomeComponent implements OnInit {
     this.detailsPresent = (accDetails && accDetails.accountName);
   }
 
+  clearStorage(): void {
+    localStorage.clear();
+    window.location.reload();
+  }
+
 }
