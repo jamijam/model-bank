@@ -34,6 +34,7 @@ export class LoanPageComponent implements OnInit {
     this.formDetails = this.formBuilder.group({
       amt: ''
     });
+    console.log(this.formDetails);
   }
 
   onSubmit(formData: any) {
@@ -44,7 +45,6 @@ export class LoanPageComponent implements OnInit {
     } else {
       this.valid = true;
       this.amt = formData.amt;
-      this.applyLoan();
     }
 
     this.formDetails.reset();
@@ -58,7 +58,7 @@ export class LoanPageComponent implements OnInit {
       const loanAmt = parseInt(this.amt, 10) *  this.scoreMult;
 
       this.smartBankService.applyLoan(APIXToken, accountId, loanAmt).subscribe(response => {
-        this.loanId = 'Loan ID : ' + response.loanId;
+        this.loanId = response.loanId;
       });
     });
   }

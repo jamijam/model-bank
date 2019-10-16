@@ -4,7 +4,7 @@
     </div>
     <div class="row mt-2 card text-dark">
         <div class="col card-body">
-            <form [formGroup]="formDetails" (ngSubmit)="onSubmit(formDetails.value)" *ngIf="!loanId">
+            <form [formGroup]="formDetails" (ngSubmit)="onSubmit(formDetails.value)" *ngIf="!amt">
                 <div class="form-group">
                     <label for="amt">Please enter the loan amount, in USD:</label>
                     <input type="text" class="form-control" id="amt" placeholder="Enter Loan Amount"
@@ -13,14 +13,20 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <small id="errHelp" *ngIf="!valid" class="form-text text-danger">Please enter an amount.</small>
             </form>
-            <div class="title text-center" *ngIf="loanId">
-                <h3 class="text-description">A loan for USD {{ amt * scoreMult }} has been approved, based on your
+            <div class="title text-center" *ngIf="amt">
+                <h3 class="text-description">A loan for USD {{ (amt * scoreMult) | number:'1.0-2' }} has been approved, based on your
                     credit score.</h3><br />
-                <h6>A mail from Model Bank has been sent to your account {{ '(ID: ' + accountIdent + ') ' }}to provide
-                    further information.
-                    <br />Please save the following ID in a secure location:
+                <div class="container row text-center" *ngIf="!loanId">
+                    <h6 class="col-12">Would you like to proceed?</h6>
+                    <div class="col">
+                        <button class="btn btn-success mr-2" (click)="applyLoan()">Yes</button>
+                        <button class="btn btn-danger ml-2" [routerLink]="['']">No</button>
+                    </div>
+                </div>
+                <h6 *ngIf="loanId">
+                    Loan ID: <span *ngIf="loanId" class="account-Info" [innerHTML]="loanId"></span> approved and disbursed. <br/>
+                    USD <span class="account-Info">{{ (amt * scoreMult) | number:'1.0-2' }}</span> has been credited to your account <span class="account-Info">{{ accountIdent }}</span>.
                 </h6><br />
-                <span class="account-Info" [innerHTML]="loanId"></span><br /><br />
             </div>
         </div>
     </div>
