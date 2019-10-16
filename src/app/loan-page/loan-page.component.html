@@ -14,7 +14,7 @@
                 <small id="errHelp" *ngIf="!valid" class="form-text text-danger">Please enter an amount.</small>
             </form>
             <div class="title text-center" *ngIf="amt">
-                <h3 class="text-description">A loan for USD {{ (amt * scoreMult) | number:'1.0-2' }} has been approved, based on your
+                <h3 class="text-description">You are only eligible for USD {{ (amt * scoreMult) | number:'1.0-2' }}, based on your
                     credit score.</h3><br />
                 <div class="container row text-center" *ngIf="!loanId">
                     <h6 class="col-12">Would you like to proceed?</h6>
