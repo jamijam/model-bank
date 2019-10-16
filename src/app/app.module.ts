@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_reusable/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
+import { IDVerificationComponent } from './id-verification/id-verification.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { HomeComponent } from './home/home.component';
@@ -19,7 +19,7 @@ import { LoanPageComponent } from './loan-page/loan-page.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent,
+    IDVerificationComponent,
     CreateAccountComponent,
     ViewDetailsComponent,
     HomeComponent,

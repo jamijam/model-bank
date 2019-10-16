@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
+import { IDVerificationComponent } from './id-verification/id-verification.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'idVerification', component: IDVerificationComponent },
   { path: 'createaccount', component: CreateAccountComponent },
   { path: 'viewdetails', component: ViewDetailsComponent },
   { path: 'apply', component: CaptureDetailsComponent },

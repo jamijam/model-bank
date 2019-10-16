@@ -34,7 +34,7 @@ export class SmartBankService {
 
     const request: AccountJson = {
       "accountClosingDate": "2019-10-12T11:38:01.711Z",
-      "accountCurrency": "GBP",
+      "accountCurrency": "USD",
       "accountName": name,
       "accountOpeningDate": "2019-10-12T11:38:01.711Z",
       "accountTypeId": hardcoded.smartbank.accountTypeId,
@@ -135,7 +135,7 @@ export class SmartBankService {
       lastinterestAppliedDate: '2019-10-15T16:59:59.694Z',
       lasttaxRateReviewDate: '2019-10-15T16:59:59.694Z',
       lineOfCreditId: 0,
-      loanAccountCurrency: 'GBP',
+      loanAccountCurrency: 'USD',
       loanContractId: 'string',
       loanName: 'string',
       loanPenaltyCalculationMethod: 'overdue_balance',
