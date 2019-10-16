@@ -69,14 +69,12 @@ export class OtpComponent implements OnInit {
       if (response.data && response.data.score) {
         this.score = response.data.score;
 
-        this.score = this.cryptoService.decodeBase64(this.score);
-        this.cryptoService.getPrivKey().subscribe(privateKey => {
-          this.cryptoService.decryptRSAOAEP(this.score, privateKey).subscribe(decrypted => {
-            decrypted = new Uint8Array(decrypted);
-            this.score = this.cryptoService.arrayBufferToString(decrypted);
-          });
+        this.cryptoService.decrypt(this.score).subscribe(decrypted => {
+          this.score = decrypted;
+
+          this.score = ((parseInt(this.score, 10) - 300) / (850 - 300)).toString();
+          localStorage.setItem('scoreMult', this.score);
         });
-        // TODO: Show result as per response (remember to update the template!)
       }
     });
   }
