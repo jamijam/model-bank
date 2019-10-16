@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { ToasterService } from 'angular2-toaster';
+
 import { ScoringService } from '../_services/scoring/scoring.service';
 import { CryptoService } from '../_services/crypto/crypto.service';
 
@@ -26,7 +28,8 @@ export class OtpComponent implements OnInit {
     private formBuilder: FormBuilder,
     private scoringService: ScoringService,
     private cryptoService: CryptoService,
-    private router: Router
+    private router: Router,
+    private toasterService: ToasterService
   ) { }
 
   ngOnInit() {
@@ -62,6 +65,13 @@ export class OtpComponent implements OnInit {
 
         this.getCreditScore();
       }
+    }, error => {
+      this.toasterService.pop(
+        'error',
+        'Error: TrustingSocial',
+        'Your OTP was rejected by the TrustingSocial API with the following message:\n' + error.error.message
+      );
+      console.error(error);
     });
   }
 
@@ -79,6 +89,13 @@ export class OtpComponent implements OnInit {
           localStorage.setItem('scoreMult', this.scoreMult.toString());
         });
       }
+    }, error => {
+      this.toasterService.pop(
+        'error',
+        'Error: TrustingSocial',
+        'The TrustingSocial API could not retrieve a credit score for this number. Check the console for more information.'
+      );
+      console.error(error);
     });
   }
 

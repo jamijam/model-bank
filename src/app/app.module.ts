@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToasterModule } from 'angular2-toaster';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_reusable/header/header.component';
@@ -32,6 +35,8 @@ import { LoanPageComponent } from './loan-page/loan-page.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToasterModule.forRoot(),
     AppRoutingModule
   ],
   providers: [],

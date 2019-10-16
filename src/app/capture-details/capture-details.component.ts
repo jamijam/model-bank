@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { ToasterService } from 'angular2-toaster';
+
 import { ScoringService } from '../_services/scoring/scoring.service';
 import { CryptoService } from '../_services/crypto/crypto.service';
 
@@ -18,7 +20,8 @@ export class CaptureDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private scoringService: ScoringService,
     private cryptoService: CryptoService,
-    private router: Router
+    private router: Router,
+    private toasterService: ToasterService
   ) { }
 
   ngOnInit() {
@@ -56,6 +59,13 @@ export class CaptureDetailsComponent implements OnInit {
 
           this.sendOTP(accessToken, msisdn);
         }
+      }, error => {
+        this.toasterService.pop(
+          'error',
+          'Invalid Credentials',
+          'Please check if you have set valid TrustingSocial credentials in your API config.'
+        );
+        console.error(error);
       });
     } else {
       this.sendOTP(accessToken, msisdn);
@@ -72,6 +82,13 @@ export class CaptureDetailsComponent implements OnInit {
           localStorage.setItem('request_id', response.data.request_id);
           this.router.navigate(['/otp']);
         }
+      }, error => {
+        this.toasterService.pop(
+          'error',
+          'Error: TrustingSocial',
+          'Your request was rejected by the TrustingSocial API with the following message:\n' + error.error.message
+        );
+        console.error(error);
       });
     });
   }

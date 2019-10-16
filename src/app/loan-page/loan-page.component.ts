@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { ToasterService } from 'angular2-toaster';
 
 import { ApixService } from '../_services/apix/apix.service';
 import { SmartBankService } from '../_services/smart-bank/smart-bank.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loan-page',
@@ -22,7 +24,8 @@ export class LoanPageComponent implements OnInit {
     private smartBankService: SmartBankService,
     private apixService: ApixService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toasterService: ToasterService
   ) { }
 
   ngOnInit() {
@@ -55,12 +58,22 @@ export class LoanPageComponent implements OnInit {
     this.apixService.getAPIXToken().subscribe(data => {
       const APIXToken = data.access_token;
 
-      const loanAmt = parseInt(this.amt, 10) *  this.scoreMult;
+      if (APIXToken.includes('Invalid')) {
+        this.toasterService.pop('error', 'Invalid Credentials', 'Please check if you have set valid APIX credentials in your API config.');
+      } else {
+        const loanAmt = parseInt(this.amt, 10) * this.scoreMult;
 
-      this.smartBankService.applyLoan(APIXToken, accountId, loanAmt).subscribe(response => {
-        this.loanId = response.loanId;
-      });
+        this.smartBankService.applyLoan(APIXToken, accountId, loanAmt).subscribe(response => {
+          this.loanId = response.loanId;
+        }, error => {
+          this.toasterService.pop(
+            'error',
+            'Error: SmartBank',
+            'The SmartBank API rejected your loan request. Check the console for more information.'
+          );
+          console.error(error);
+        });
+      }
     });
   }
-
 }

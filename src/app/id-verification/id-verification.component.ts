@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ToasterService } from 'angular2-toaster';
+
 import { HypervergeResponse } from '../_models/kyc/hyperverge-response';
 
 import { FaceMatchService } from '../_services/face-match/face-match.service';
@@ -22,12 +24,16 @@ export class IDVerificationComponent implements OnInit {
 
   constructor(
     private faceMatchService: FaceMatchService,
-    private apixService: ApixService
+    private apixService: ApixService,
+    private toasterService: ToasterService
   ) { }
 
   ngOnInit() {
     this.apixService.getAPIXToken().subscribe(data => {
       this.APIXToken = data.access_token;
+      if (this.APIXToken.includes('Invalid')) {
+        this.toasterService.pop('error', 'Invalid Credentials', 'Please check if you have set valid APIX credentials in your API config.');
+      }
     });
   }
 
@@ -51,7 +57,15 @@ export class IDVerificationComponent implements OnInit {
           this.loadImage(this.image1, 'image1');
           this.loadImage(this.image2, 'image2');
         }
-      });
+      },
+        error => {
+          this.toasterService.pop(
+            'error',
+            'Error: FaceMatch',
+            'Your images were rejected by the FaceMatch API. Please check the console for extra information.'
+          );
+          console.error(error);
+        });
   }
 
   loadImage(image: any, imgTagId: string) {
