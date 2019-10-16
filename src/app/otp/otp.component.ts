@@ -76,7 +76,7 @@ export class OtpComponent implements OnInit {
           if (parseInt(this.score, 10) > 850) { this.score = '0'; }
 
           this.scoreMult = ((parseInt(this.score, 10) - 300) / (850 - 300));
-          localStorage.setItem('scoreMult', this.score);
+          localStorage.setItem('scoreMult', this.scoreMult.toString());
         });
       }
     });

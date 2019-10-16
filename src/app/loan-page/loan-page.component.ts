@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 
 import { ApixService } from '../_services/apix/apix.service';
 import { SmartBankService } from '../_services/smart-bank/smart-bank.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loan-page',
@@ -14,14 +15,20 @@ export class LoanPageComponent implements OnInit {
   valid = true;
   loanId: string;
   amt: string;
+  scoreMult: number;
 
   constructor(
     private smartBankService: SmartBankService,
     private apixService: ApixService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.scoreMult = parseFloat(localStorage.getItem('scoreMult'), 10);
+    if (!this.scoreMult) {
+      this.router.navigate(['']);
+    }
     this.formDetails = this.formBuilder.group({
       amt: ''
     });
@@ -46,7 +53,9 @@ export class LoanPageComponent implements OnInit {
     this.apixService.getAPIXToken().subscribe(data => {
       const APIXToken = data.access_token;
 
-      this.smartBankService.applyLoan(APIXToken, accountId).subscribe(response => {
+      const loanAmt = parseInt(this.amt, 10) *  this.scoreMult;
+
+      this.smartBankService.applyLoan(APIXToken, accountId, loanAmt).subscribe(response => {
         this.loanId = 'Loan ID : ' + response.loanId;
       });
     });

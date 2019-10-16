@@ -97,7 +97,7 @@ export class SmartBankService {
     return this.http.post(hardcoded.smartbank.setOwnersUrl, request, { headers });
   }
 
-  applyLoan(APIXToken: string, accountId: string): Observable<any> {
+  applyLoan(APIXToken: string, accountId: string, amt: number): Observable<any> {
     const headers: HttpHeaders = new HttpHeaders().set('X-Authorization', 'bearer ' + APIXToken);
 
     const request = {
@@ -164,7 +164,7 @@ export class SmartBankService {
       subStatus: 'active',
       taxRate: 0,
       term: 'string',
-      totalLoanAmountFunded: 0,
+      totalLoanAmountFunded: amt,
       totalPrincipleAmnt: 0,
       totalPymntTillDate: 0,
       totalRecInt: 0,
