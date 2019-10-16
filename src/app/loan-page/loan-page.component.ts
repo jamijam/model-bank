@@ -16,6 +16,7 @@ export class LoanPageComponent implements OnInit {
   loanId: string;
   amt: string;
   scoreMult: number;
+  accountIdent: string;
 
   constructor(
     private smartBankService: SmartBankService,
@@ -25,8 +26,9 @@ export class LoanPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.scoreMult = parseFloat(localStorage.getItem('scoreMult'), 10);
-    if (!this.scoreMult) {
+    this.scoreMult = parseFloat(localStorage.getItem('scoreMult'));
+    this.accountIdent = JSON.parse(localStorage.getItem('accountDetails')).accountIdentification;
+    if (!this.scoreMult || !this.accountIdent) {
       this.router.navigate(['']);
     }
     this.formDetails = this.formBuilder.group({
