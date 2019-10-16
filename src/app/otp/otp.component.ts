@@ -20,6 +20,7 @@ export class OtpComponent implements OnInit {
   msisdn: string;
   formDetails: any;
   score: string;
+  scoreMult: number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,12 +68,14 @@ export class OtpComponent implements OnInit {
   getCreditScore() {
     this.scoringService.getScore(this.accessToken, this.secureMSISDN, this.consentId).subscribe(response => {
       if (response.data && response.data.score) {
-        this.score = response.data.score;
 
-        this.cryptoService.decrypt(this.score).subscribe(decrypted => {
+        this.cryptoService.decrypt(response.data.score).subscribe(decrypted => {
           this.score = decrypted;
 
-          this.score = ((parseInt(this.score, 10) - 300) / (850 - 300)).toString();
+          if (parseInt(this.score, 10) < 300) { this.score = '0'; }
+          if (parseInt(this.score, 10) > 850) { this.score = '0'; }
+
+          this.scoreMult = ((parseInt(this.score, 10) - 300) / (850 - 300));
           localStorage.setItem('scoreMult', this.score);
         });
       }

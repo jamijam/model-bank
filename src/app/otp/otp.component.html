@@ -18,8 +18,12 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <small id="errHelp" *ngIf="!valid" class="form-text text-danger">Please enter the OTP.</small>
             </form>
-            <h2 *ngIf="score" class="text-success text-center pt-3">You are eligible for a loan!<br/>
+            <h3 *ngIf="scoreMult" class="text-dark text-center pt-3">Your credit score percentage: {{ (scoreMult * 100) | number:'1.0-0' }}%</h3>
+            <h2 *ngIf="scoreMult && scoreMult >= 0.5" class="text-success text-center pt-3">You are eligible for a loan!<br/>
                 <button class="btn btn-success" [routerLink]="['/loanapproval']">Continue</button>
+            </h2>
+            <h2 *ngIf="scoreMult && scoreMult < 0.5" class="text-secondary text-center pt-3">Unfortunately, you are not eligible for a loan.<br/>
+                <button class="btn btn-secondary" [routerLink]="['']">Home</button>
             </h2>
         </div>
     </div>
