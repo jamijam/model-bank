@@ -2,7 +2,9 @@
 
 This use case is an extension of [Micro-Lending Credit Insight Use Case](https://github.com/apixplatform/microlending-credit-insight)
 
-Evaluating the creditworthiness of the borrowers, automated loan approval and loan disbursement is demonstrated in this use case.
+This use case is built with Angular 8. To go through the use case, you don't need to know Angular. But if you are interested in leaning Angular, please follow [this](https://www.bitovi.com/academy/learn-angular.html) tutorial.
+
+Evaluating the creditworthiness of the borrowers, automated loan approval and loan disbursement are demonstrated in this use case.
 
 ## APIs used to implement the use case
 
