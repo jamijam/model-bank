@@ -8,18 +8,18 @@
     },
     "facematch": {
         "apiCredentials": {
-            "appId": "2d9288",
-            "appKey": "506505f70970ce16988f"
+            "appId": "Replace this with Hyperverge appId",
+            "appKey": "Replace this with Hyperverge appKey"
         },
         "apixTokenUrl": "https://services.apixplatform.com/api-sandbox/application/token",
         "verifyUrl": "https://api.apixplatform.com/facematch/1.0/v1/photo/verifyPair"
     },
     "scoreApi": {
         "credentials": {
-            "user_name": "apix_user",
-            "password": "apixuser@123"
+            "user_name": "Replace this with Trusting Social Username",
+            "password": "Replace this with Trusting Social Password"
         },
-        "clientCode": "apix_client",
+        "clientCode": "Replace this with Trusting Social Client Code",
         "url": {
             "base": "https://staging-api.trustingsocial.com",
             "loginEndpoint": "https://staging-api.trustingsocial.com/authentication/users/login",
