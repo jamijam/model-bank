@@ -1,7 +1,7 @@
 <div class="container-fluid canvas-bg">
     <div class="container content-bg">
 
-        <div class="page-heading">
+        <div class="page-heading d-none d-lg-block">
 
             <h1 class="title">WELCOME TO MODEL BANK</h1>
             <h6 class="subheading">Thank you for choosing to create an account with us.</h6>
@@ -10,7 +10,7 @@
 
         </div>
 
-        <div class="row steps-custom">
+        <div class="row steps-custom d-none d-lg-flex">
 
             <div class="text-center progress-circle-active">
                 <span class="span-number">01</span>
@@ -31,8 +31,8 @@
         </div>
 
         <div class="title">
-            <h3 class="text-description">Your account has been successfully created!</h3>
-            <h6>A mail from Model Bank has been sent to verify your identity and provide further information.
+            <h3 class="text-description text-center text-lg-left">Your account has been successfully created!</h3>
+            <h6 class="text-center text-lg-left">A mail from Model Bank has been sent to verify your identity and provide further information.
                 <br />Please save the following details in a secure location:
             </h6><br />
             <span class="account-Info" [innerHTML]="accountInfo"></span><br />
@@ -40,7 +40,7 @@
 
         <div class="row">
             <div class="col-12 text-center mx-auto">
-                <button class="input-button ml-3" [routerLink]="['']">Home</button>
+                <button class="input-button ml-lg-3" [routerLink]="['']">Home</button>
             </div>
         </div>
 

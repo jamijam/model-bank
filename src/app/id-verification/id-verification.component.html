@@ -1,7 +1,7 @@
 <div class="container-fluid canvas-bg">
   <div class="container content-bg">
 
-    <div class="page-heading">
+    <div class="page-heading d-none d-lg-block">
 
       <h1 class="title">WELCOME TO MODEL BANK</h1>
       <h6 class="subheading">Thank you for choosing to create an account with us.</h6>
@@ -10,7 +10,7 @@
 
     </div>
 
-    <div class="row steps-custom">
+    <div class="row steps-custom d-none d-lg-flex">
 
       <div class="text-center progress-circle-active">
         <span class="span-number">01</span>
@@ -30,17 +30,17 @@
 
     </div>
 
-    <div class="row">
+    <div class="row text-center text-lg-left">
       <!--Step Action-->
       <p class="text-description">First, let's validate your identity.
         <br>Please submit a picture of your National Identity Document and your picture.</p>
     </div>
 
-    <div class="row" [class.d-none]="!verified">
-      <div class="col">
+    <div class="row text-center text-lg-left" [class.d-none]="!verified">
+      <div class="col d-none d-lg-block">
         <img class="img-fluid" id="image1" />
       </div>
-      <div class="col">
+      <div class="col d-none d-lg-block">
         <img class="img-fluid" id="image2" />
       </div>
       <div class="col text-description mx-auto">
@@ -54,13 +54,13 @@
         Our API could not find a match between the uploaded images. Please try again with more similar images.
       </div>
       <div class="col-12 text-center mx-auto">
-        <button [disabled]="confidence <= 70" class="input-button mr-3" [routerLink]="['/createaccount']">Go to Account Creation</button>
-        <button class="input-button ml-3" (click)="cancel()">Cancel</button>
+        <button [disabled]="confidence <= 70" class="input-button mr-lg-3" [routerLink]="['/createaccount']">Go to Account Creation</button>
+        <button class="input-button ml-lg-3" (click)="cancel()">Cancel</button>
       </div>
     </div>
 
     <div class="form" *ngIf="!verified">
-      <div class="id-photo upload">
+      <div class="id-photo upload pb-4 pb-lg-0">
         <label class="label">UPLOAD ID PHOTO</label>
         <br>
         <input class="input-field" type="file" (change)="onFile1Selected($event)" />
